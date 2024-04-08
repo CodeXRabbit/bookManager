@@ -6,6 +6,8 @@ import org.example.bookmanager.service.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -16,7 +18,7 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addBook(@RequestBody Book book) {
+    public ResponseEntity<String> addBook(@RequestBody @Valid Book book) {
         bookService.addBook(book);
         return ResponseEntity.ok("Successfully add book");
     }
@@ -27,7 +29,7 @@ public class BookController {
     }
 
     @GetMapping("/getOne/{bookId}")
-    public ResponseEntity<Book> getById(@PathVariable("bookId") Integer bookId) {
+    public ResponseEntity<Book> getById(@PathVariable("bookId") @NotNull Integer bookId) {
         return ResponseEntity.of(bookService.getBookDetail(bookId));
     }
 
