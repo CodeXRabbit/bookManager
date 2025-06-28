@@ -1,13 +1,13 @@
-package org.example.bookmanager.controller;
+package org.example.bookManager.controller;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
-import org.example.bookmanager.entity.Book;
-import org.example.bookmanager.service.BookService;
+import org.example.bookManager.entity.Book;
+import org.example.bookManager.service.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController

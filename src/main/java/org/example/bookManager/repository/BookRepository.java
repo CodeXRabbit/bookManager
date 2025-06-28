@@ -1,10 +1,9 @@
-package org.example.bookmanager.repository;
+package org.example.bookManager.repository;
 
-import org.example.bookmanager.entity.Book;
+import org.example.bookManager.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer> {
-
 }

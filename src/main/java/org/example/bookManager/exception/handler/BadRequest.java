@@ -1,4 +1,4 @@
-package org.example.bookmanager.exception.handler;
+package org.example.bookManager.exception.handler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

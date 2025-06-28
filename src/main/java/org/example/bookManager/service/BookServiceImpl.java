@@ -1,10 +1,11 @@
-package org.example.bookmanager.service;
+package org.example.bookManager.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.bookmanager.entity.Book;
-import org.example.bookmanager.repository.BookRepository;
+import org.example.bookManager.entity.Book;
+import org.example.bookManager.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +37,6 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public void deleteBook(Integer bookId) {
-        bookRepository.deleteById(bookId);
+        bookRepository.deleteAllByIdInBatch(Collections.singletonList(bookId));
     }
 }

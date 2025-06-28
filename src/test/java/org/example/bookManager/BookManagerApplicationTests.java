@@ -1,9 +1,9 @@
-package org.example.bookmanager;
+package org.example.bookManager;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.bookmanager.controller.BookController;
-import org.example.bookmanager.entity.Book;
-import org.example.bookmanager.service.BookService;
+import org.example.bookManager.controller.BookController;
+import org.example.bookManager.entity.Book;
+import org.example.bookManager.service.BookService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +54,7 @@ class BookManagerApplicationTests {
 
     @Test
     void testGetOneBook() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/book/getOne/{bookId}", 2)
+        mockMvc.perform(MockMvcRequestBuilders.get("/book/getOne/{bookId}", 1)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print());

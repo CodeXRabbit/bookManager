@@ -1,6 +1,6 @@
-package org.example.bookmanager.service;
+package org.example.bookManager.service;
 
-import org.example.bookmanager.entity.Book;
+import org.example.bookManager.entity.Book;
 
 import java.util.List;
 import java.util.Optional;

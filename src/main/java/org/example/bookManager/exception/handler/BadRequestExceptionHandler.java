@@ -1,4 +1,4 @@
-package org.example.bookmanager.exception.handler;
+package org.example.bookManager.exception.handler;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -13,13 +13,16 @@ import java.util.logging.Logger;
 @RestControllerAdvice
 public class BadRequestExceptionHandler {
 
-    private static final Logger logger = Logger.getLogger(BadRequestExceptionHandler.class.getName());
+    private static final Logger logger
+            = Logger.getLogger(BadRequestExceptionHandler.class.getName());
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public ResponseEntity<List<BadRequest>> handleRequestBodyException(MethodArgumentNotValidException exception) {
+    public ResponseEntity<List<BadRequest>> handleRequestBodyException(
+            MethodArgumentNotValidException exception) {
         List<BadRequest> badRequests = new ArrayList<>();
         if (exception.getBindingResult().hasErrors()) {
-            logger.warning(Objects.requireNonNull(exception.getBindingResult().getFieldError()).getDefaultMessage());
+            logger.warning(Objects.requireNonNull(
+                    exception.getBindingResult().getFieldError()).getDefaultMessage());
             exception.getBindingResult().getFieldErrors().forEach(fieldError -> {
                 String field = fieldError.getField();
                 String message = fieldError.getDefaultMessage();
