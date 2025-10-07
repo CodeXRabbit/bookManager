@@ -60,4 +60,9 @@ class BookManagerApplicationTests {
                 .andDo(MockMvcResultHandlers.print());
     }
 
+    @Test
+    void testGetLibraryPath() {
+        System.out.println(System.getProperty("java.library.path"));
+    }
+
 }
