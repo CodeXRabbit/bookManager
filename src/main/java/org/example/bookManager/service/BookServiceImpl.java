@@ -3,6 +3,7 @@ package org.example.bookManager.service;
 import lombok.RequiredArgsConstructor;
 import org.example.bookManager.entity.Book;
 import org.example.bookManager.repository.BookRepository;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -22,19 +23,21 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Cacheable(value = "books", key = "'all'")
+    @Cacheable(value = "books")
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
     @Override
+    @Cacheable(value = "book", key = "#bookId")
     public Optional<Book> getBookDetail(Integer bookId) {
         return bookRepository.findById(bookId);
     }
 
     @Override
-    public void updateBookInfo(Book book) {
-        bookRepository.saveAndFlush(book);
+    @CachePut(value = "book", key = "#book.bookId")
+    public Book updateBookInfo(Book book) {
+        return bookRepository.saveAndFlush(book);
     }
 
     @Override
